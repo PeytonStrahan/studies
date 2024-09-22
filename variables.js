@@ -1,5 +1,5 @@
 /**
- * 0: Variables are named containers for storing data. (... add a few more sentences to describe variables)
+ * 0: Variables are named containers for storing data.
  * The purpose of a variable is to be a reference that holds on to (or points to) a piece of data so
  * that it may be used or altered later on in the program. Variables can hold on to one of
  * many different types of values ranging from simple data types (like numbers, strings, and booleans)
@@ -14,7 +14,7 @@
  * type the assignment operator (=), and then type out whatever value you want to assign the variable to. This process can be repeated to reassign different values to the same
  * variable, replacing the old value each time it is done.
  * 
- * 2. Var, let, const: There are three declarative keywords that can be used to declare variables--var, let, const. (.. describe each keyword in detai)
+ * 2. Var, let, const: There are three declarative keywords that can be used to declare variables--var, let, const.
  * Var is the original declarative keyword. Var variables can be either globally-scoped (meaning that it can be accessed from basically anywhere within
  * the program file due to being declared inside of the global scope but outside of any function scope) or function-scoped (meaning that it can only be
  * accessed and utilized within the function that it was defined in as-well-as any other function contained within the same function). Variables
@@ -28,7 +28,7 @@
  * mutating an array or object assigned to a const variable is possible because it actually doesn't reassign anything to the variable.
  * Differences in hoisting for var, let, and const will be discussed in the upcoming "Hoisting" explanation.
  * 
- * 3: Hoisting: (... describe hoisting in detail) Hoisting is when function and variable declarations are moved to the top of their scope during the program's compilation phase
+ * 3: Hoisting: Hoisting is when function and variable declarations are moved to the top of their scope during the program's compilation phase
  * (before the program actually begins). This allows the the program to use functions (in their scope) before they are defined. Variables work a little differently.
  * Variable declarations (but not their initializations nor their assignments) are hoisted to the top of their scope, causing the variable to "initialize" and point to
  * the value of undefined from the beggining of the program until the part in the program that assigns a value to them is ran. While this works normally for var variables
