@@ -100,17 +100,68 @@ if(true) {
 console.log(fruit3); // prints => "pear"
 console.log(fruit1 + " " + fruit2 + " " + fruit3); // prints => "ReferenceError: fruit1 is not defined"
 
-// 2.4 differences in re-declaration //
-// Re-declaring a var variable replaces the old variable. re-declaring a let or const variable creates an error.
-// Because the errors this code has causes the program to not run, it is recommended to run the first three lines by themselves first so that an actual result can be logged.
+// 2.4 var variable re-declaration //
+// Re-declaring a var variable replaces the old variable.
 var name = "Bob";
 var name = "Shrek";
-console.log(name); // prints => "Shrek" (doesn't actually run due to a later error causing the program to not really run any code in the file)
+console.log(name); // prints => "Shrek"
 
+// 2.5 let and const variable re-declaration //
+// Re-declaring a let or const variable creates an error.
 let coins = 72;
 let coins = 100; // prints => "SyntaxError: Identifier 'coins' has already been declared"
-consolee.log(coins); // (doesn't actually run due to error)
+console.log(coins); // (doesn't actually run due to error)
 
 const myFriends = 0;
 const myFriends = 1; // (would print "SyntaxError: Identifier 'myFriends' has already been declared", but the previous error stopped the program from running)
-consolee.log(myFriends); // (doesn't actually run due to error)
+console.log(myFriends); // (doesn't actually run due to error)
+
+// 2.6 const variable can't be reassigned //
+// Trying to reassign data to a const variable creates an error.
+const unFunnyNumber = 68;
+unFunnyNumber = 419; // prints => "TypeError: Assignment to constant variable."
+console.log(unFunnyNumber); // (doesn't actually run due to error)
+
+// 2.6 const variable must be initialized //
+// Trying to declare a const variable without initializing it a value creates an error.
+const strangeGreeting; // prints => "SyntaxError: Missing initializer in const declaration"
+strangeGreeting = "Hewwo";
+console.log(strangeGreeting); // (doesn't actually run due to error)
+
+// 2.7 const variables holding complex data types can be mutated //
+// Permanent changes can occur to whatever complex data type a const variable is pointing to.
+const wierdArray = ["bungus", 1337, {jo: "mama"}];
+wierdArray[0] = "bingus";
+wierdArray[2].face = "-_-";
+console.log(wierdArray); /* prints => ["bingus", 1337, [object Object] {
+                                        face: "-_-",
+                                        jo: "mama"
+                                      }]
+*/
+
+
+
+// 3.1 hoisted var variables point to undefined //
+// Trying to access a var variable before they are initialized or assigned a value results in undefined.
+console.log(question1); // prints => undefined
+var question1 = "Who are you?";
+
+// 3.2 hoisted const and let variables can create errors //
+// Trying to access a const or let variable before they are initialized or assigned a value results in a specialized error.
+console.log(question2); // prints => "ReferenceError: Cannot access 'question2' before initialization"
+console.log(question3); // (would print "ReferenceError: Cannot access 'question3' before initialization", but the previous error stopped the program)
+let question2 = "How are you?";
+const question3 = "Are you ok?";
+
+// 3.3 hoisted functions declarations work differently to hoisted variables pointing to functions //
+// Function declarations can be accessed and used before they are declared. Function expressions use the same rules as whatever type of variable is used to store/reference the function, meaning that they cannot be used before they are assigned to a variable.
+console.log(lookAt("you")); // prints => "*looks at you"
+console.log(giveHug); // prints => undefined
+console.log(giveHug("you")); // prints => "TypeError: giveHug is not a function"
+
+function lookAt(person) {
+    return "*looks at " + person;
+};
+var giveHug = function(person) {
+    return "*hugs " + person;
+};
