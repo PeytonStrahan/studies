@@ -10,7 +10,7 @@
  * 1. Declaration and Assignment: In order to create a variable we must first `declare` it. Depending on the declarative keyword you use, you may initialize
  * the variable with a value or not. You can declare a variable by typing a variable keyword (var, let, or const) in front of what you want to name the variable.
  * This creates a new variable that is initialized/assigned to undefined by default. We can assign a value by using the assignment operator (=). On either the line that the
- * variable was initialized on or on a line after it; we can type the variable's name (if it wasn't already typed out when tryint to initalize and assign a variable on the same line),
+ * variable was initialized on or on a line after it; we can type the variable's name (if it wasn't already typed out when trying to initalize and assign a variable on the same line),
  * type the assignment operator (=), and then type out whatever value you want to assign the variable to. This process can be repeated to reassign different values to the same
  * variable, replacing the old value each time it is done.
  * 
@@ -38,3 +38,79 @@
  * can't be used before they are declared.
  */
 
+// 1.1 declaration //
+// Declaring and then logging a variable results in getting undefined because the variable was neither initialized nor assigned a value.
+var someVariable;
+console.log(someVariable); // prints => undefined
+
+// 1.2 initialization and assignment //
+// initVariable will be given a value on the same line that it was declared on (initialization). someOtherVar will be given a value on the line after its declaration (assignment).
+// Both variables will log the value that was assigned to them.
+var initVariable = "initialized";
+console.log(initVariable); // prints => "initialized"
+var someOtherVar;
+someOtherVar = "assigned";
+console.log(someOtherVar); // prints => "assigned"
+
+// 1.3 re-assignment //
+// someOtherVar from 1.2 will be given given a new value, replacing the old value.
+someOtherVar = "re-assigned";
+console.log(someOtherVar); // prints => "re-assigned"
+
+
+
+// 2.1 variables can be used anywhere within its scope//
+// Declaring any type of variable makes it usable/accessable within any function or code block (including nested ones) located within the scope that the variables were defined within.
+// In this case, the variables are usable anywhere because they were defined in the global scope.
+var stooge1 = "Moe";
+let stooge2 = "Curly";
+const stooge3 = "Larry";
+
+function logger(x, y, z) {
+    console.log(x + " " + y + " " + z); // prints => "Moe Curly Larry"
+    if (true) {
+        console.log("still: " + x + " " + y + " " + z); // prints => "still: Moe Curly Larry"
+    }
+};
+
+logger(stooge1, stooge2, stooge3);
+
+// 2.2 variables are function scoped //
+// Declaring a var variable (or any other type of variable) in a function makes it usable within the function, but not outside of the function.
+function logger2() {
+    var animal1 = "dog";
+    let animal2 = "cat";
+    const animal3 = "fly";
+    console.log(animal1 + " " + animal2 + " " + animal3); // prints => "dog cat fly"
+};
+
+logger2();
+console.log(animal1 + " " + animal2 + " " + animal3); // prints => "ReferenceError: animal1 is not defined" (animal2 and animal3 would have caused the same error, but both are skipped because the program stops after encountering the first error)
+
+// 2.3 let and const variables are block scoped //
+// Declaring a let or const variable in a code block makes it usable within the code block, but not outside of the code block.
+// This rule does not apply to var variables.
+if(true) {
+    let fruit1 = "apple";
+    const fruit2 = "banana";
+    var fruit3 = "pear";
+    console.log(fruit1 + " " + fruit2 + " " + fruit3); // prints => "apple banana pear"
+};
+
+console.log(fruit3); // prints => "pear"
+console.log(fruit1 + " " + fruit2 + " " + fruit3); // prints => "ReferenceError: fruit1 is not defined"
+
+// 2.4 differences in re-declaration //
+// Re-declaring a var variable replaces the old variable. re-declaring a let or const variable creates an error.
+// Because the errors this code has causes the program to not run, it is recommended to run the first three lines by themselves first so that an actual result can be logged.
+var name = "Bob";
+var name = "Shrek";
+console.log(name); // prints => "Shrek" (doesn't actually run due to a later error causing the program to not really run any code in the file)
+
+let coins = 72;
+let coins = 100; // prints => "SyntaxError: Identifier 'coins' has already been declared"
+consolee.log(coins); // (doesn't actually run due to error)
+
+const myFriends = 0;
+const myFriends = 1; // (would print "SyntaxError: Identifier 'myFriends' has already been declared", but the previous error stopped the program from running)
+consolee.log(myFriends); // (doesn't actually run due to error)
